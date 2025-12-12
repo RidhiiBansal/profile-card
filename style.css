@@ -1,0 +1,141 @@
+/* Variables & reset */
+:root{
+  --bg1: #f3f6fb;
+  --bg2: #eef3ff;
+  --glass-bg: rgba(255,255,255,0.55);
+  --glass-border: rgba(255,255,255,0.55);
+  --accent: #6b3fb0;
+  --muted: #5b6270;
+  --soft-shadow: rgba(99,65,153,0.10);
+  --inset-shadow: rgba(0,0,0,0.06);
+  --card-w: 380px;
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,system-ui,Arial,sans-serif}
+html,body{height:100%}
+body{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: radial-gradient(1200px 600px at 10% 20%, #f6f9ff 0%, transparent 10%),
+              radial-gradient(1000px 500px at 90% 80%, #fff7ff 0%, transparent 8%),
+              linear-gradient(180deg,var(--bg1),var(--bg2));
+  -webkit-font-smoothing:antialiased;
+  padding:28px;
+  color:#1b1f24;
+}
+
+/* Page wrapper */
+.page{width:100%;display:flex;align-items:center;justify-content:center;padding:24px}
+
+/* Glass card outer */
+.card-glass{
+  width: min(var(--card-w), 92%);
+  border-radius:18px;
+  padding:18px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.55));
+  border: 1px solid rgba(255,255,255,0.6);
+  box-shadow:
+    0 12px 30px rgba(20,18,23,0.06),
+    0 2px 6px rgba(99,65,153,0.04);
+  backdrop-filter: blur(8px) saturate(120%);
+  position:relative;
+  overflow:visible;
+}
+
+/* inner card that uses neumorphism-style shadows */
+.card-inner{
+  display:flex;
+  gap:18px;
+  align-items:center;
+  padding:16px;
+  border-radius:14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(250,250,255,0.6));
+  box-shadow:
+    inset 8px 8px 18px rgba(255,255,255,0.85),
+    inset -8px -8px 18px rgba(220,220,230,0.6),
+    0 10px 24px rgba(99,65,153,0.06);
+}
+
+/* Avatar with soft raised effect (neumorphism) */
+.avatar-wrap{
+  flex:0 0 110px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.avatar{
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  object-fit:cover;
+  border:8px solid rgba(255,255,255,0.9);
+  box-shadow:
+    8px 8px 20px rgba(0,0,0,0.06),
+    -8px -8px 18px rgba(255,255,255,0.9);
+  transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s ease;
+}
+
+/* content column */
+.card-content{flex:1;min-width:0}
+.name{font-size:20px;font-weight:700;color:#111;margin-bottom:4px}
+.role{font-size:13px;color:var(--muted);margin-bottom:12px}
+.skill-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.pill{
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,245,255,0.9));
+  padding:6px 10px;border-radius:999px;font-size:12px;color:var(--accent);
+  border:1px solid rgba(102,51,153,0.06);
+  box-shadow: 2px 2px 6px rgba(99,65,153,0.03), -2px -2px 6px rgba(255,255,255,0.8);
+}
+
+/* bio */
+.bio{color:#31353a;font-size:14px;line-height:1.5;margin-bottom:14px;}
+
+/* actions: primary + ghost (glass look) */
+.actions{display:flex;gap:10px;align-items:center}
+.btn{
+  display:inline-block;padding:10px 14px;border-radius:10px;font-weight:600;font-size:14px;text-decoration:none;
+  transition: transform .14s ease, box-shadow .18s ease;
+  border:0;
+  cursor:pointer;
+}
+.btn:focus{outline:3px solid rgba(102,51,153,0.12);outline-offset:4px}
+.primary{
+  background: linear-gradient(180deg,var(--accent), #8a5ed6);
+  color:#fff;
+  box-shadow: 0 10px 26px rgba(102,51,153,0.12);
+}
+.ghost{
+  background: transparent;
+  color:var(--accent);
+  border:1px solid rgba(102,51,153,0.12);
+  backdrop-filter: blur(2px);
+}
+
+/* footer small tag under card */
+.card-footer{
+  margin-top:12px;
+  font-size:12px;
+  color:var(--muted);
+  text-align:center;
+}
+
+/* hover effects */
+.card-glass:hover .avatar{ transform: translateY(-6px) scale(1.04); box-shadow: 12px 14px 30px rgba(99,65,153,0.12), -8px -8px 18px rgba(255,255,255,0.9) }
+.primary:hover{ transform: translateY(-4px) scale(1.01); box-shadow: 0 18px 40px rgba(102,51,153,0.16) }
+.ghost:hover{ transform: translateY(-3px); box-shadow: 0 8px 20px rgba(102,51,153,0.06) }
+.pill:hover{ transform: translateY(-3px) scale(1.02) }
+
+/* responsive */
+@media (max-width:520px){
+  .card-inner{flex-direction:column;align-items:center;text-align:center;padding:14px}
+  .avatar-wrap{margin-top:-8px}
+  .card-content{width:100%}
+  .name{font-size:18px}
+  .bio{font-size:13px}
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .avatar, .btn, .pill { transition: none !important; transform: none !important; box-shadow: none !important; }
+}
