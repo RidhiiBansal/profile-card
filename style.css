@@ -1,4 +1,4 @@
-/* Variables & reset */
+/* ================= VARIABLES & RESET ================= */
 :root{
   --bg1: #f3f6fb;
   --bg2: #eef3ff;
@@ -6,44 +6,56 @@
   --glass-border: rgba(255,255,255,0.55);
   --accent: #6b3fb0;
   --muted: #5b6270;
-  --soft-shadow: rgba(99,65,153,0.10);
-  --inset-shadow: rgba(0,0,0,0.06);
   --card-w: 380px;
 }
-*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,system-ui,Arial,sans-serif}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Inter,system-ui,Arial,sans-serif;
+}
+
 html,body{height:100%}
+
 body{
   min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  background: radial-gradient(1200px 600px at 10% 20%, #f6f9ff 0%, transparent 10%),
-              radial-gradient(1000px 500px at 90% 80%, #fff7ff 0%, transparent 8%),
-              linear-gradient(180deg,var(--bg1),var(--bg2));
-  -webkit-font-smoothing:antialiased;
+  background:
+    radial-gradient(1200px 600px at 10% 20%, #f6f9ff 0%, transparent 10%),
+    radial-gradient(1000px 500px at 90% 80%, #fff7ff 0%, transparent 8%),
+    linear-gradient(180deg,var(--bg1),var(--bg2));
   padding:28px;
   color:#1b1f24;
+  -webkit-font-smoothing:antialiased;
 }
 
-/* Page wrapper */
-.page{width:100%;display:flex;align-items:center;justify-content:center;padding:24px}
+/* ================= PAGE ================= */
+.page{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
 
-/* Glass card outer */
+/* ================= CARD ================= */
 .card-glass{
-  width: min(var(--card-w), 92%);
+  width:min(var(--card-w),92%);
   border-radius:18px;
   padding:18px;
   background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.55));
-  border: 1px solid rgba(255,255,255,0.6);
+  border:1px solid rgba(255,255,255,0.6);
   box-shadow:
     0 12px 30px rgba(20,18,23,0.06),
     0 2px 6px rgba(99,65,153,0.04);
   backdrop-filter: blur(8px) saturate(120%);
-  position:relative;
-  overflow:visible;
+  animation: fadeUp 0.8s ease-out both;
 }
 
-/* inner card that uses neumorphism-style shadows */
+/* ================= INNER ================= */
 .card-inner{
   display:flex;
   gap:18px;
@@ -57,109 +69,134 @@ body{
     0 10px 24px rgba(99,65,153,0.06);
 }
 
-/* Avatar with soft raised effect (neumorphism) */
+/* ================= AVATAR ================= */
 .avatar-wrap{
   flex:0 0 110px;
   display:flex;
   align-items:center;
   justify-content:center;
 }
+
 .avatar{
   width:110px;
   height:110px;
   border-radius:50%;
   object-fit:cover;
   border:8px solid rgba(255,255,255,0.9);
+  background: linear-gradient(135deg,#e9ddff,#f7f2ff);
   box-shadow:
     8px 8px 20px rgba(0,0,0,0.06),
     -8px -8px 18px rgba(255,255,255,0.9);
-  transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s ease;
+  transition: transform .4s ease, box-shadow .4s ease;
 }
 
-/* content column */
+/* ================= CONTENT ================= */
 .card-content{flex:1;min-width:0}
-.name{font-size:20px;font-weight:700;color:#111;margin-bottom:4px}
-.role{font-size:13px;color:var(--muted);margin-bottom:12px}
-.skill-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+
+.name{
+  font-size:22px;
+  font-weight:700;
+  letter-spacing:0.3px;
+  color:#111;
+  margin-bottom:6px;
+}
+
+.role{
+  font-size:14px;
+  color:var(--muted);
+  opacity:0.9;
+  margin-bottom:14px;
+}
+
+.skill-row{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:12px;
+}
+
 .pill{
   background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,245,255,0.9));
-  padding:6px 10px;border-radius:999px;font-size:12px;color:var(--accent);
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  color:var(--accent);
   border:1px solid rgba(102,51,153,0.06);
-  box-shadow: 2px 2px 6px rgba(99,65,153,0.03), -2px -2px 6px rgba(255,255,255,0.8);
+  box-shadow:
+    2px 2px 6px rgba(99,65,153,0.03),
+    -2px -2px 6px rgba(255,255,255,0.8);
+  transition: all .25s ease;
 }
 
-/* bio */
-.bio{color:#31353a;font-size:14px;line-height:1.5;margin-bottom:14px;}
-
-/* =============== UPDATED BUTTON STYLING =============== */
-
-.actions {
-  margin-top: 20px;
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  align-items: center;
+.pill:hover{
+  background:#f5ecff;
+  transform: translateY(-3px) scale(1.02);
 }
 
-/* Base button */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 22px;
-  font-size: 14px;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 12px;
-  cursor: pointer;
+/* ================= BIO ================= */
+.bio{
+  color:#31353a;
+  font-size:14px;
+  line-height:1.5;
+  opacity:0.95;
+  margin-bottom:16px;
+}
+
+/* ================= BUTTONS ================= */
+.actions{
+  margin-top:20px;
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 22px;
+  font-size:14px;
+  font-weight:600;
+  text-decoration:none;
+  border-radius:12px;
+  cursor:pointer;
   transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
-  border: 1.5px solid rgba(255,255,255,0.35);
+  border:1.5px solid rgba(255,255,255,0.35);
   backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-  color: var(--accent);
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
+  color:var(--accent);
 }
 
-/* focus outline */
-.btn:focus {
-  outline: 3px solid rgba(102,51,153,0.15);
-  outline-offset: 4px;
+.btn:focus-visible{
+  outline:3px solid rgba(107,63,176,0.4);
+  outline-offset:4px;
 }
 
-/* Primary button (purple) */
-.btn.primary,
-.primary {
+.btn.primary{
   background: linear-gradient(135deg,#6b3fb0,#8a5ed6);
-  color: #fff;
-  border: none;
-  box-shadow: 0 10px 26px rgba(102,51,153,0.14);
+  color:#fff;
+  border:none;
+  box-shadow:0 10px 26px rgba(102,51,153,0.14);
 }
 
-.btn.primary:hover,
-.primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 16px 36px rgba(102,51,153,0.22);
+.btn.primary:hover{
+  transform: translateY(-4px) scale(1.03);
+  box-shadow:0 16px 36px rgba(102,51,153,0.22);
 }
 
-/* Ghost button (glass white) */
-.btn.ghost,
-.ghost {
-  background: rgba(255,255,255,0.40);
-  color: var(--accent);
-  border: 1px solid rgba(102,51,153,0.12);
-  backdrop-filter: blur(6px);
+.btn.ghost{
+  background: rgba(255,255,255,0.4);
+  color:var(--accent);
+  border:1px solid rgba(102,51,153,0.12);
 }
 
-.btn.ghost:hover,
-.ghost:hover {
+.btn.ghost:hover{
   background: rgba(255,255,255,0.65);
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(99,65,153,0.07);
+  box-shadow:0 10px 20px rgba(99,65,153,0.07);
 }
 
-
-
-/* footer small tag under card */
+/* ================= FOOTER ================= */
 .card-footer{
   margin-top:12px;
   font-size:12px;
@@ -167,22 +204,36 @@ body{
   text-align:center;
 }
 
-/* hover effects */
-.card-glass:hover .avatar{ transform: translateY(-6px) scale(1.04); box-shadow: 12px 14px 30px rgba(99,65,153,0.12), -8px -8px 18px rgba(255,255,255,0.9) }
-.primary:hover{ transform: translateY(-4px) scale(1.01); box-shadow: 0 18px 40px rgba(102,51,153,0.16) }
-.ghost:hover{ transform: translateY(-3px); box-shadow: 0 8px 20px rgba(102,51,153,0.06) }
-.pill:hover{ transform: translateY(-3px) scale(1.02) }
+/* ================= HOVER EFFECT ================= */
+.card-glass:hover .avatar{
+  transform: scale(1.08);
+  box-shadow:
+    0 20px 40px rgba(138,94,214,0.35),
+    -10px -10px 20px rgba(255,255,255,0.9);
+}
 
-/* responsive */
+/* ================= RESPONSIVE ================= */
 @media (max-width:520px){
-  .card-inner{flex-direction:column;align-items:center;text-align:center;padding:14px}
-  .avatar-wrap{margin-top:-8px}
-  .card-content{width:100%}
-  .name{font-size:18px}
+  .card-inner{
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    padding:14px;
+  }
+  .actions{
+    justify-content:center;
+  }
+  .name{font-size:20px}
   .bio{font-size:13px}
 }
 
-/* reduced motion */
+/* ================= ANIMATION ================= */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px) scale(0.98)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+/* ================= REDUCED MOTION ================= */
 @media (prefers-reduced-motion: reduce){
-  .avatar, .btn, .pill { transition: none !important; transform: none !important; box-shadow: none !important; }
+  *{transition:none!important;animation:none!important}
 }
